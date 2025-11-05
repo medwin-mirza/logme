@@ -1,0 +1,19 @@
+{
+  "name": "logme",
+  "version": "1.0.0",
+  "description": "A pop-up overlay for your logs — visual, searchable, only what you need.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["log", "debug", "overlay", "console", "ui", "web", "development", "logging"],
+  "author": "Medwin Mirza",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.2.0"
+  }
+}
