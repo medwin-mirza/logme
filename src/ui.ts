@@ -27,9 +27,26 @@ export function initLogMeUI() {
   document.body.appendChild(toggle);
   document.body.appendChild(panel);
 
+  const formatMessage = (msg: any): string => {
+    if (msg === null) return 'null';
+    if (msg === undefined) return 'undefined';
+    if (typeof msg === 'object') {
+      try {
+        // Use a replacer to preserve undefined values
+        return JSON.stringify(msg, (key, value) => {
+          return value === undefined ? 'undefined' : value;
+        }, 2);
+      } catch {
+        return String(msg);
+      }
+    }
+    return String(msg);
+  };
+
   const render = (entry: LogEntry) => {
     const div = document.createElement('div');
-    div.textContent = `${entry.type.toUpperCase()}: ${entry.message.join(' ')} (${entry.timestamp})`;
+    const formattedMessages = entry.message.map(formatMessage).join(' ');
+    div.textContent = `${entry.type.toUpperCase()}: ${formattedMessages} (${entry.timestamp})`;
     div.style.color =
       entry.type === 'error' ? '#f55' :
       entry.type === 'warn' ? '#ffb400' :
