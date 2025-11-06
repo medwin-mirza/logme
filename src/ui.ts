@@ -3,8 +3,8 @@ import { log, type LogEntry } from './logme.js';
 export function initLogMeUI() {
   const panel = document.createElement('div');
   panel.style.cssText = `
-    position:fixed;bottom:50px;right:10px;
-    width:300px;max-height:40vh;overflow:auto;
+    position:fixed;bottom:55px;right:25px;
+    width:50%;max-height:40vh;overflow:auto;
     background:#111;color:#eee;font-family:monospace;
     font-size:12px;padding:8px;border-radius:8px;
     box-shadow:0 0 10px rgba(0,0,0,0.5);z-index:99999;
@@ -29,7 +29,7 @@ export function initLogMeUI() {
 
   const render = (entry: LogEntry) => {
     const div = document.createElement('div');
-    div.textContent = `[${entry.timestamp}] ${entry.type.toUpperCase()}: ${entry.message.join(' ')}`;
+    div.textContent = `${entry.type.toUpperCase()}: ${entry.message.join(' ')} (${entry.timestamp})`;
     div.style.color =
       entry.type === 'error' ? '#f55' :
       entry.type === 'warn' ? '#ffb400' :

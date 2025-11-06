@@ -8,11 +8,9 @@
   <body>
     <h2>LogMe Test Page</h2>
     <script type="module">
-        import { log, initLogMeUI } from './dist/index.js';
+        import { log } from './dist/index.js';
       
-        window.addEventListener('DOMContentLoaded', () => {
-          initLogMeUI();
-      
+        window.addEventListener('DOMContentLoaded', () => {      
           log.info('Hello LogMe!');
           log.warn('Careful — this is a warning.');
           log.error('Oops. Something went wrong.');
